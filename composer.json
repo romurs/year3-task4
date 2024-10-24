@@ -1,0 +1,18 @@
+{
+    "name": "romurs/task4",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Romurs\\Task4\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "romurs",
+            "email": "1romurs@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^11.4"
+    }
+}
