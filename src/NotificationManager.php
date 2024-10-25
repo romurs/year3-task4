@@ -7,19 +7,21 @@ use Romurs\Task4\Notification;
 
 class NotificationManager
 {
-  private $notificationHistory = [];
+  private array $notificationHistory = [];
 
-  public function getNotificationHistory(){
+  public function getNotificationHistory(): array
+  {
     return $this->notificationHistory;
   }
 
-  private function writeLogToFile($path, $message){
+  private function writeLogToFile(string $path, string $message)
+  {
     $fd = fopen($path, 'a') or die('Не удалось открыть файл');
     fwrite($fd, $message);
     fclose($fd);
   }
 
-  public function sendNotification(Notification $notification, $message)
+  public function sendNotification(Notification $notification, string $message) : void
   {
     try {
       $notification->send($message);
@@ -28,14 +30,14 @@ class NotificationManager
         'status' => $notification->getStatus(),
         'timestamp' => $notification->getTimestamp()
       ]);
-      $this->writeLogToFile('log.txt', 'Отправилось со статусом:' . $notification->getStatus());
+      $this->writeLogToFile('log.txt', 'Отправилось со статусом:' . $notification->getStatus() . PHP_EOL);
     } catch (Exception $e) {
       array_push($this->notificationHistory, [
         'type' => $notification->getType(),
         'status' => 'failed',
         'timestamp' => date('Y-m-d H:i:s')
       ]);
-      $this->writeLogToFile('log.txt', 'Ошибка:' .$e->getMessage());
+      $this->writeLogToFile('log.txt', 'Ошибка:' . $e->getMessage() . PHP_EOL);
     }
   }
 }
