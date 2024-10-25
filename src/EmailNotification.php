@@ -30,7 +30,7 @@ class EmailNotification extends AbstractNotification
     }
   }
 
-  public function getType() : string
+  public function getType(): string
   {
     return "Email";
   }

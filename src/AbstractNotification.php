@@ -10,14 +10,14 @@ abstract class AbstractNotification implements Notification
   protected string $status;
   protected DateTimeImmutable $timestamp;
 
-  abstract public function send(string $message) : void;
+  abstract public function send(string $message): void;
 
   public function getStatus(): string
   {
     return $this->status;
   }
 
-  public function getTimestamp() : DateTimeImmutable
+  public function getTimestamp(): DateTimeImmutable
   {
     return $this->timestamp;
   }

@@ -9,7 +9,7 @@ class SMSNotification extends AbstractNotification
 {
   private int $maxLength = 160;
 
-  public function send(string $message) : void
+  public function send(string $message): void
   {
     if (strlen($message) > $this->maxLength) {
       throw new MessageExceedsMaxCharactersException('Длина сообщения превышает 160 символов');
@@ -23,7 +23,7 @@ class SMSNotification extends AbstractNotification
       print $e->getMessage() . PHP_EOL;
     }
   }
-  public function getType() : string
+  public function getType(): string
   {
     return "SMS";
   }

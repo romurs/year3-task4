@@ -21,7 +21,7 @@ class NotificationManager
     fclose($fd);
   }
 
-  public function sendNotification(Notification $notification, string $message) : void
+  public function sendNotification(Notification $notification, string $message): void
   {
     try {
       $notification->send($message);
