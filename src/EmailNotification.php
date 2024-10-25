@@ -10,12 +10,12 @@ class EmailNotification extends AbstractNotification
 {
   private string $theme;
 
-  public function setTheme(string $theme)
+  public function setTheme(string $theme): void
   {
     $this->theme = $theme;
   }
 
-  public function send($message)
+  public function send(string $message): void
   {
     if (empty($this->theme)) {
       throw new ThemeIsNotSelectedException('Тема не выбрана');
@@ -30,7 +30,8 @@ class EmailNotification extends AbstractNotification
     }
   }
 
-  public function getType() {
+  public function getType() : string
+  {
     return "Email";
   }
 }

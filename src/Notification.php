@@ -7,5 +7,4 @@ interface Notification{
   public function getStatus();
   public function getType();
   public function getTimestamp();
-
 }
