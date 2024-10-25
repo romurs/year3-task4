@@ -3,7 +3,7 @@
 namespace Romurs\Task4;
 
 use Romurs\Task4\AbstractNotification;
-use Romurs\Task4\MessageExceedsMaxCharactersException;
+use Romurs\Task4\Exceptions\MessageExceedsMaxCharactersException;
 
 class SMSNotification extends AbstractNotification
 {
@@ -13,10 +13,10 @@ class SMSNotification extends AbstractNotification
     if (strlen($message) > $this->maxLength) {
       throw new MessageExceedsMaxCharactersException('Длина сообщения превышает 160 символов');
     }
-
+    
     try {
       $this->status = "sent";
-      return "Отправка SMS: " . $message . PHP_EOL;
+      print "Отправка SMS: " . $message . PHP_EOL;
     } catch (MessageExceedsMaxCharactersException $e) {
       $this->status = "failed";
       print $e->getMessage() . PHP_EOL;

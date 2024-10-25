@@ -9,9 +9,13 @@ class NotificationManager
 {
   private $notificationHistory = [];
 
+  public function getNotificationHistory(){
+    return $this->notificationHistory;
+  }
+
   private function writeLogToFile($path, $message){
     $fd = fopen($path, 'a') or die('Не удалось открыть файл');
-    fwrite("fd", $message);
+    fwrite($fd, $message);
     fclose($fd);
   }
 
@@ -32,7 +36,6 @@ class NotificationManager
         'timestamp' => date('Y-m-d H:i:s')
       ]);
       $this->writeLogToFile('log.txt', 'Ошибка:' .$e->getMessage());
-      // $this->logger->error($notification->getType() . ' failed: ' . $e->getMessage());
     }
   }
 }
