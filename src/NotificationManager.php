@@ -14,7 +14,7 @@ class NotificationManager
     return $this->notificationHistory;
   }
 
-  private function writeLogToFile(string $path, string $message)
+  private function writeLogToFile(string $path, string $message) : void
   {
     $fd = fopen($path, 'a');
     fwrite($fd, $message);
